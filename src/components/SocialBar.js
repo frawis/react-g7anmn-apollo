@@ -3,10 +3,11 @@ import { motion, useCycle } from "framer-motion";
 import { useDimensions } from "../utils/use-dimensions";
 import SocialToggle from "./SocialToggle";
 import SocialNavigation from "./SocialNavigation";
+import "./socialbar.css";
 
 const socialmenu = {
-  open: (height = 300) => ({
-    clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+  open: (height = 15) => ({
+    clipPath: `circle(${height * 2 + 200}px at 30px 30px)`,
     transition: {
       type: "spring",
       stiffness: 20,
@@ -14,7 +15,7 @@ const socialmenu = {
     }
   }),
   closed: {
-    clipPath: "circle(30px at 40px 40px)",
+    clipPath: "circle(24px at 32px 32px)",
     transition: {
       delay: 0.5,
       type: "spring",
@@ -30,16 +31,22 @@ const SocialBar = () => {
   const { height } = useDimensions(containerRef);
 
   return (
-    <motion.nav
-      initial={false}
-      animate={isOpen ? "open" : "closed"}
-      custom={height}
-      ref={containerRef}
-    >
-      <motion.div className="background" variants={socialmenu} />
-      <SocialNavigation />
-      <SocialToggle toggle={() => setIsOpen()} />
-    </motion.nav>
+    <div className="relative">
+      <motion.nav
+        initial={false}
+        animate={isOpen ? "open" : "closed"}
+        custom={height}
+        ref={containerRef}
+        className="social-nav"
+      >
+        <motion.div
+          className="social-nav__background bg-gray-50"
+          variants={socialmenu}
+        />
+        <SocialNavigation />
+        <SocialToggle toggle={() => setIsOpen()} />
+      </motion.nav>
+    </div>
   );
 };
 

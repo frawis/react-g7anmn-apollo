@@ -18,7 +18,7 @@ const Post = () => {
 
   return (
     <div className="grid grid-cols-12 gap-8">
-      <div className="col-span-2 bg-gray-200">
+      <div className="col-span-2 relative">
         <svg className="progress-icon" viewBox="0 0 60 60">
           <motion.path
             fill="none"

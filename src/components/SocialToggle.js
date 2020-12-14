@@ -13,7 +13,10 @@ const Path = props => (
 
 const SocialToggle = ({ toggle }) => {
   return (
-    <button onClick={toggle}>
+    <button
+      onClick={toggle}
+      className="social-nav__toggle"
+    >
       <svg width="23" height="23" viewBox="0 0 23 23">
         <Path
           variants={{
