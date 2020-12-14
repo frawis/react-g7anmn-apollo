@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Main from "./Main";
 import Kurse from "./Kurse";
 import KursDetails from "./KursDetails";
+import Post from "./components/Post";
 
 export default function App() {
   return (
@@ -15,6 +16,9 @@ export default function App() {
           <div>
             <Link to="/kurse">Kurse</Link>
           </div>
+          <div>
+            <Link to="/post">Beitrag</Link>
+          </div>
         </nav>
         <Switch>
           <Route path="/" exact>
@@ -25,6 +29,9 @@ export default function App() {
           </Route>
           <Route path="/kurse/:id" exact>
             <KursDetails />
+          </Route>
+          <Route path="/post" exact>
+            <Post />
           </Route>
         </Switch>
       </React.Suspense>
