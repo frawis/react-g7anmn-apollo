@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import Main from "./Main";
 import Kurse from "./Kurse";
 import News from "./News";
+import FramerTest from "./FramerTest";
 import KursDetails from "./KursDetails";
 import Post from "./components/Post";
 
@@ -22,6 +23,9 @@ export default function App() {
               <div>
                 <Link to="/post">Beitrag</Link>
               </div>
+              <div>
+                <Link to="/animation">Animation</Link>
+              </div>
             </nav>
           </div>
         </div>
@@ -32,6 +36,9 @@ export default function App() {
             </Route>
             <Route path="/news" exact>
               <News />
+            </Route>
+            <Route path="/animation" exact>
+              <FramerTest />
             </Route>
             <Route path="/kurse" exact>
               <Kurse />
