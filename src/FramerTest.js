@@ -3,11 +3,14 @@ import React, { useState } from "react";
 import Loader from "./components/Loader";
 import Modal from "./components/Modal";
 import Buttons from "./components/Buttons";
+import ImageGrid from "./components/ImageGrid";
 
 import UploadForm from "./components/forms/uploadForm";
 
 const FramerTest = () => {
   const [showModal, setShowModal] = useState(false);
+  const [selectedImg, setSelectedImg] = useState(null);
+
   return (
     <>
       <Modal showModal={showModal} setShowModal={setShowModal} />
@@ -32,6 +35,12 @@ const FramerTest = () => {
             <h3 className="text-2xl font-bold mb-4">Formulare</h3>
           </div>
           <UploadForm />
+        </div>
+        <div>
+          <div>
+            <h3 className="text-2xl font-bold mb-4">Image Grid</h3>
+          </div>
+          <ImageGrid setSelectedImg={setSelectedImg} />
         </div>
       </div>
     </>
