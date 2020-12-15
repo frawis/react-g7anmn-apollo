@@ -1,60 +1,37 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
-const Accordion = ({ i, expanded, setExpanded }) => {
-  const isOpen = i === expanded;
-  return (
-    <>
-      1
-      <motion.header
-        initial={false}
-        animate={{
-          backgroundColor: isOpen
-            ? "bg-gray-500 text-white"
-            : "bg-yellow-500 text-yellow-50"
-        }}
-        onClick={() => setExpanded(isOpen ? false : data)}
-      />
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.section
-            key="content"
-            initial="collapsed"
-            animate="open"
-            exit="collapsed"
-            variants={{
-              open: { opacity: 1, height: "auto" },
-              collapsed: { opacity: 0, height: 0 }
-            }}
-            transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
-          >
-            <div>1</div>
-          </motion.section>
-        )}
-      </AnimatePresence>
-    </>
-  );
-};
+import Loader from "./components/Loader";
+import Modal from "./components/Modal";
+import Buttons from "./components/Buttons";
+
+import UploadForm from "./components/forms/uploadForm";
 
 const FramerTest = () => {
-  const [expanded, setExpanded] = useState(false, 0);
-  const accordionIds = [0, 1, 2, 3];
-  console.log(expanded);
+  const [showModal, setShowModal] = useState(false);
   return (
     <>
+      <Modal showModal={showModal} setShowModal={setShowModal} />
       <div className="max-w-screen-xl px-4 md:px-6 lg:px-8">
         <div>
-          <h2>Framer Animations</h2>
+          <h2 className="text-4xl font-bold mb-4">Framer Animations</h2>
         </div>
         <div>
           <div>
-            <motion.h2 animate={{ scale: 1.2 }}>Akkordion</motion.h2>
+            <h3 className="text-2xl font-bold mb-4">Loader</h3>
           </div>
+          <Loader />
+        </div>
+        <div>
           <div>
-            {accordionIds.map(i => {
-              <Accordion i={i} expanded={expanded} setExpanded={setExpanded} />;
-            })}
+            <h3 className="text-2xl font-bold mb-4">Modal</h3>
           </div>
+          <Buttons onClick={() => setShowModal(!showModal)}>Modal</Buttons>
+        </div>
+        <div>
+          <div>
+            <h3 className="text-2xl font-bold mb-4">Formulare</h3>
+          </div>
+          <UploadForm />
         </div>
       </div>
     </>
